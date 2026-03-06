@@ -1,4 +1,6 @@
 import { MercadoPagoConfig, Preference, Payment } from "mercadopago";
+import dotenv from "dotenv";
+dotenv.config();
 
 // Initialize Mercado Pago with Access Token
 const client = new MercadoPagoConfig({
