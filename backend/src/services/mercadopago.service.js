@@ -12,7 +12,9 @@ const client = new MercadoPagoConfig({
  * @param {string} paymentId - Mercado Pago payment ID
  */
 export const getMPPayment = async (paymentId) => {
+  console.log("token", process.env.MERCADOPAGO_ACCESS_TOKEN);
   const payment = new Payment(client);
+  console.log(payment);
   const response = await payment.get({ id: paymentId });
   return response;
 };
