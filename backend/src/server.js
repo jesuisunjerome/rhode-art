@@ -26,12 +26,6 @@ app.use(
 // If JSON parses it first, signature verification will always fail.
 app.use("/api/payments/webhook", express.raw({ type: "application/json" }));
 
-//Mercado Pago webhook
-app.use(
-  "/api/payments/webhook/mercadopago",
-  express.raw({ type: "application/json" }),
-);
-
 // All other routes use standard JSON parsing
 app.use(express.json());
 
