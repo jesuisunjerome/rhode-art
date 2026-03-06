@@ -46,7 +46,9 @@ app.use("/api/categories", categoryRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/payments", paymentRoutes);
 app.get("/", (_, res) => {
-  res.send("API is running...");
+  res.send(
+    `API is running... FRONTEND_URL: ${process.env.FRONTEND_URL} BACKEND_URL: ${process.env.BACKEND_URL}, PORT: ${process.env.PORT}`,
+  );
 });
 
 // Error handling middleware
