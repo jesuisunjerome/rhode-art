@@ -13,7 +13,6 @@ const client = new MercadoPagoConfig({
  */
 export const getMPPayment = async (paymentId) => {
   const payment = new Payment(client);
-  console.log("response", await payment.get({ id: paymentId }));
   const response = await payment.get({ id: paymentId });
   return response;
 };

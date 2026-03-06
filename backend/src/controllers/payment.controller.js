@@ -115,35 +115,38 @@ export const handleMPWebhook = asyncHandler(async (req, res) => {
     if (paymentId) {
       const { getMPPayment } =
         await import("../services/mercadopago.service.js");
-      const payment = await getMPPayment(paymentId);
-      console.log(payment);
+      try {
+        const payment = await getMPPayment(paymentId);
 
-      if (payment.status === "approved") {
-        const orderId =
-          payment.external_reference || payment.metadata?.order_id;
+        if (payment.status === "approved") {
+          const orderId =
+            payment.external_reference || payment.metadata?.order_id;
 
-        if (orderId) {
-          const order = await Order.findById(orderId);
-          if (order && !order.isPaid) {
-            order.isPaid = true;
-            order.paidAt = new Date();
-            order.paymentResult = {
-              id: payment.id.toString(),
-              status: payment.status,
-              update_time: payment.date_approved,
-              email_address: payment.payer?.email || "",
-            };
-            await order.save();
+          if (orderId) {
+            const order = await Order.findById(orderId);
+            if (order && !order.isPaid) {
+              order.isPaid = true;
+              order.paidAt = new Date();
+              order.paymentResult = {
+                id: payment.id.toString(),
+                status: payment.status,
+                update_time: payment.date_approved,
+                email_address: payment.payer?.email || "",
+              };
+              await order.save();
 
-            // Send Emails after successful payment via MP webhook
-            sendOrderEmail(order, "client");
-            sendOrderEmail(order, "admin");
+              // Send Emails after successful payment via MP webhook
+              sendOrderEmail(order, "client");
+              sendOrderEmail(order, "admin");
 
-            console.log(
-              `✅ Order ${orderId} marked as paid via Mercado Pago webhook`,
-            );
+              console.log(
+                `✅ Order ${orderId} marked as paid via Mercado Pago webhook`,
+              );
+            }
           }
         }
+      } catch (error) {
+        console.error("Error processing Mercado Pago webhook:", error);
       }
     }
   }
