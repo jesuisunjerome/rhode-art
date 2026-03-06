@@ -9,6 +9,10 @@ import { sendOrderEmail } from "../services/email.service.js";
 export const handleStripeWebhook = asyncHandler(async (req, res) => {
   const sig = req.headers["stripe-signature"];
 
+  console.info("Webhook received");
+  console.info("req.body", req.body);
+  console.info("sig", sig);
+
   if (!sig) {
     res.status(400);
     throw new Error("Missing stripe-signature header");
