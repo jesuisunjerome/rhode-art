@@ -104,6 +104,8 @@ export const handleMPWebhook = asyncHandler(async (req, res) => {
 
   const { action, data, type } = body;
 
+  console.log(body);
+
   // We are interested in payment created/updated
   if (
     action === "payment.created" ||
