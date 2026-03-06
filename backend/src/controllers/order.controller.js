@@ -48,9 +48,9 @@ export const createOrder = asyncHandler(async (req, res) => {
 
   // const shippingPrice = itemsPrice > 100 ? 0 : 10; // Example logic
   const shippingPrice = 0;
-  const totalPrice = itemsPrice + shippingPrice;
+  let totalPrice = itemsPrice + shippingPrice;
   const iva = totalPrice * IVA;
-  const totalWithIva = totalPrice + iva;
+  totalPrice = totalPrice + iva;
 
   const order = new Order({
     orderItems: verifiedOrderItems,
@@ -60,7 +60,7 @@ export const createOrder = asyncHandler(async (req, res) => {
     itemsPrice,
     shippingPrice,
     iva,
-    totalPrice: totalWithIva,
+    totalPrice,
     isPaid: false, // Defaults to false until webhook confirms payment
   });
 
