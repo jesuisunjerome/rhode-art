@@ -1,0 +1,146 @@
+[
+  {
+    "name": "Horizontes de Haití",
+    "shortDescription": "Cada obra cuenta una historia de naturaleza y emoción, donde los colores del Caribe se encuentran con la expresión personal del artista.",
+    "description": "Esta obra captura la esencia de los paisajes caribeños con una energía vibrante y emotiva. Los tonos cálidos y las texturas ricas del acrílico sobre tela crean una experiencia visual que transporta al espectador a los horizontes de Haití.",
+    "dimensions": "38x31 cm",
+    "type": "original",
+    "medium": "acrílico sobre lienzo",
+    "price": 2500,
+    "images": [
+      "https://images.unsplash.com/photo-1586537049236-b212dc756931?q=80&w=1019&auto=format&fit=crop"
+    ],
+    "countInStock": 1,
+    "year": 2021,
+    "signed": true,
+    "category": "obras-originales"
+  },
+  {
+    "name": "Mar de Coral",
+    "shortDescription": "Explosión de vida marina donde el coral danza con la luz del Caribe, creando un universo submarino de texturas y tonalidades.",
+    "description": "Mar de Coral es una celebración de la biodiversidad caribeña. Esta pieza explora las profundidades del océano con una paleta de rojos, naranjas y amarillos que evocan los arrecifes de coral al amanecer. Las capas de acrílico construyen una textura casi táctil, invitando al espectador a sumergirse en un mundo submarino de formas orgánicas y movimiento perpetuo.",
+    "dimensions": "50x40 cm",
+    "type": "original",
+    "medium": "acrílico sobre lienzo",
+    "price": 3500,
+    "images": [
+      "https://images.unsplash.com/photo-1632231484562-3d2bed7e808d?w=500&auto=format&fit=crop"
+    ],
+    "countInStock": 1,
+    "year": 2022,
+    "signed": true,
+    "category": "obras-originales"
+  },
+  {
+    "name": "Memorias del Trópico",
+    "shortDescription": "Un viaje nostálgico a través de colores tropicales y formas que evocan la calidez de tierras lejanas.",
+    "description": "Memorias del Trópico transporta al espectador a los recuerdos más vívidos del Caribe. La obra juega con contrastes entre luz y sombra, utilizando verdes profundos y azules celestes para recrear la atmósfera única de las tardes tropicales. Cada pincelada es un fragmento de memoria, una emoción capturada en el tiempo que refleja la conexión del artista con sus raíces haitianas.",
+    "type": "original",
+    "dimensions": "60x50 cm",
+    "medium": "acrílico sobre lienzo",
+    "price": 4500,
+    "images": [
+      "https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=735&auto=format&fit=crop"
+    ],
+    "countInStock": 0,
+    "year": 2023,
+    "signed": true,
+    "category": "obras-originales"
+  },
+  {
+    "name": "Ritmos de la Tierra",
+    "shortDescription": "Una composición dinámica que captura el pulso vital de la naturaleza caribeña en su estado más puro y salvaje.",
+    "description": "Ritmos de la Tierra es una exploración del movimiento y la energía que emana de los paisajes caribeños. Esta obra de gran formato combina trazos gestuales con áreas de color plano, creando un diálogo visual entre caos y orden. Los tonos terrosos y ocres se entrelazan con estallidos de color brillante, simbolizando la dualidad entre la serenidad de la tierra y la intensidad de la vida que florece en ella.",
+    "type": "original",
+    "dimensions": "70x60 cm",
+    "medium": "acrílico sobre lienzo",
+    "price": 5500,
+    "images": [
+      "https://images.unsplash.com/photo-1578301978069-45264734cddc?q=80&w=712&auto=format&fit=crop"
+    ],
+    "countInStock": 1,
+    "year": 2024,
+    "signed": true,
+    "category": "naturaleza-paisajes"
+  },
+  {
+    "name": "Amanecer en Puerto Príncipe",
+    "shortDescription": "Los primeros rayos de sol iluminan la ciudad, revelando la esperanza y la resiliencia de su gente a través del color.",
+    "description": "Amanecer en Puerto Príncipe es un homenaje a la ciudad natal del artista. Esta pieza monumental captura el momento exacto en que el sol rompe el horizonte, bañando las calles y edificios con una luz dorada. Los contrastes entre las sombras frías de la noche y los cálidos tonos del amanecer simbolizan la dualidad de la experiencia urbana caribeña: sus desafíos y su inquebrantable belleza.",
+    "type": "original",
+    "dimensions": "80x70 cm",
+    "medium": "acrílico sobre lienzo",
+    "price": 6500,
+    "images": [
+      "https://images.unsplash.com/photo-1581592487771-132f53bd2b48?q=80&w=718&auto=format&fit=crop"
+    ],
+    "countInStock": 0,
+    "year": 2024,
+    "signed": true,
+    "category": "naturaleza-paisajes"
+  },
+  {
+    "name": "Voces del Viento",
+    "shortDescription": "Una sinfonía visual donde el viento tropical se convierte en color, llevando consigo historias ancestrales.",
+    "description": "Voces del Viento es una de las obras más expresivas de la colección. Esta pieza de gran formato utiliza una técnica de capas transparentes que permite que los colores se mezclen ópticamente, creando profundidad y movimiento. Los azules etéreos y verdes jade fluyen a través del lienzo como ráfagas de viento caribeño, mientras que líneas gestuales representan las voces invisibles de generaciones pasadas que aún resuenan en el paisaje.",
+    "type": "original",
+    "dimensions": "90x80 cm",
+    "medium": "acrílico sobre lienzo",
+    "price": 7500,
+    "images": [
+      "https://images.unsplash.com/photo-1579541513287-3f17a5d8d62c?q=80&w=752&auto=format&fit=crop"
+    ],
+    "countInStock": 1,
+    "year": 2024,
+    "signed": true,
+    "category": "obras-originales"
+  },
+  {
+    "name": "Jardín de Hibiscos",
+    "shortDescription": "Un estallido floral que celebra la exuberancia de la flora caribeña con pinceladas vibrantes y sensuales.",
+    "description": "Jardín de Hibiscos es la obra más grande y ambiciosa de esta colección. Inspirada en los jardines tropicales de Haití, esta pieza monumental explora la belleza de las flores de hibisco en plena floración. Los rojos intensos, rosas vibrantes y amarillos brillantes se entrelazan con verdes profundos, creando una composición que pulsa con vida. La técnica de empaste grueso añade dimensión física, haciendo que las flores casi salten del lienzo.",
+    "dimensions": "100x90 cm",
+    "type": "original",
+    "medium": "acrílico sobre lienzo",
+    "price": 8500,
+    "images": [
+      "https://images.unsplash.com/photo-1581592487771-132f53bd2b48?q=80&w=718&auto=format&fit=crop"
+    ],
+    "countInStock": 1,
+    "year": 2024,
+    "signed": true,
+    "category": "naturaleza-paisajes"
+  },
+  {
+    "name": "Reflejos del Caribe - Edición Abierta",
+    "shortDescription": "Una impresión de alta calidad que captura la esencia de las aguas cristalinas del Caribe y sus reflejos cambiantes.",
+    "description": "Reflejos del Caribe está ahora disponible como edición abierta, permitiendo que más coleccionistas disfruten de esta obra icónica. La impresión digital sobre lienzo mantiene la intensidad de los colores originales: turquesas brillantes, azules profundos y destellos de luz blanca que danzan sobre la superficie. Perfecta para quienes buscan traer un pedazo del paraíso caribeño a su hogar.",
+    "dimensions": "50x40 cm",
+    "type": "open-edition",
+    "medium": "impresión digital sobre lienzo",
+    "price": 3500,
+    "images": [
+      "https://images.unsplash.com/photo-1581592487771-132f53bd2b48?q=80&w=718&auto=format&fit=crop"
+    ],
+    "countInStock": 50,
+    "year": 2024,
+    "signed": true,
+    "category": "ediciones-abiertas"
+  },
+  {
+    "name": "Atardecer en Jacmel - Giclée",
+    "shortDescription": "Una impresión giclée de museo que reproduce fielmente los tonos cálidos de la Costa Sur de Haití al atardecer.",
+    "description": "Atardecer en Jacmel se presenta como una impresión giclée de edición abierta sobre papel de arte fino de alta calidad. Esta reproducción captura con precisión excepcional los tonos dorados, naranjas y púrpuras del ocaso en la pintoresca ciudad costera de Jacmel. La técnica giclée garantiza una reproducción de calidad de museo con colores duraderos y detalles nítidos, haciendo que esta obra sea una adición elegante para cualquier colección.",
+    "type": "giclee",
+    "dimensions": "50x40 cm",
+    "medium": "impresión Giclée sobre papel de arte fino",
+    "price": 3500,
+    "images": [
+      "https://images.unsplash.com/photo-1581592487771-132f53bd2b48?q=80&w=718&auto=format&fit=crop"
+    ],
+    "countInStock": 20,
+    "year": 2024,
+    "signed": true,
+    "category": "giclee"
+  }
+]

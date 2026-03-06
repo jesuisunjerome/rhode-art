@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=LINE+Seed+JP&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #c7ddeb;
+  --color-primary-dark: #0a2540;
+  --color-secondary-dark: #004e64;
+  --color-secondary-light: #155e75;
+  --color-accent: #fa7132;
+  --color-light: #fff;
+}
+
+:root {
+  font-family: "LINE Seed JP", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 0.95rem;
+
+  background-color: var(--color-light);
+  color: var(--color-secondary-light);
+}
+
+nav a {
+  @apply text-xs font-semibold tracking-widest uppercase;
+}
+
+nav a.active {
+  color: var(--color-accent);
+}
+
+.form-label {
+  @apply text-primary-dark text-sm font-medium uppercase;
+}
+
+.form-input {
+  @apply focus:border-accent w-full border border-slate-200 px-4 py-3 transition-colors focus:outline-none;
+
+  font-size: 16px;
+}
+
+button {
+  @apply cursor-pointer disabled:cursor-not-allowed;
+}
+
+.btn-primary {
+  @apply bg-primary-dark text-primary relative inline-flex flex-1 items-center justify-center gap-2 px-5 py-4 text-center text-xs tracking-widest uppercase sm:flex-none md:py-3;
+
+  &&::after {
+    position: absolute;
+    content: "";
+    top: 3px;
+    left: 3px;
+    width: 101%;
+    height: 101%;
+    border: 1px solid var(--color-primary-dark);
+  }
+}
+
+.btn-primary-hover {
+  @apply hover:bg-primary-dark hover:text-primary disabled:text-secondary-dark relative inline-flex flex-1 items-center justify-center gap-2 bg-slate-100 px-5 py-4 text-xs tracking-widest uppercase disabled:bg-slate-100 disabled:opacity-40 sm:flex-none md:py-3;
+
+  &&::after {
+    position: absolute;
+    content: "";
+    top: 3px;
+    left: 3px;
+    width: 101%;
+    height: 101%;
+    border: 1px solid var(--color-primary);
+  }
+
+  &&:hover:not(:disabled):after {
+    border: 1px solid var(--color-primary-dark);
+  }
+}
+
+.btn-secondary {
+  @apply bg-primary text-primary-dark relative inline-flex flex-1 items-center justify-center gap-2 px-5 py-4 text-xs tracking-widest uppercase disabled:opacity-40 sm:flex-none md:py-3;
+}
+
+.scrollbar-hide .art-container {
+  @apply bg-light w-80 md:w-90;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
