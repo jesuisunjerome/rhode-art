@@ -63,10 +63,10 @@ export const createOrder = asyncHandler(async (req, res) => {
 
   // 2. Logic for Payment Initializations (Stripe/PayPal/MP)
   let responseData = { order: createdOrder };
-
   if (paymentMethod === "Stripe" || paymentMethod === "Apple Pay") {
     // Create Stripe PaymentIntent (server-side, amount tied to DB-verified price)
     const amountInCents = Math.round(totalPrice * 100);
+
     const paymentIntent = await createPaymentIntent(
       amountInCents,
       "usd",
