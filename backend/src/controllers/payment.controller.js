@@ -104,8 +104,6 @@ export const handleMPWebhook = asyncHandler(async (req, res) => {
 
   const { action, data, type } = body;
 
-  console.log(body);
-
   // We are interested in payment created/updated
   if (
     action === "payment.created" ||
@@ -117,7 +115,9 @@ export const handleMPWebhook = asyncHandler(async (req, res) => {
     if (paymentId) {
       const { getMPPayment } =
         await import("../services/mercadopago.service.js");
+      console.log(paymentId);
       const payment = await getMPPayment(paymentId);
+      console.log(payment);
 
       if (payment.status === "approved") {
         const orderId =
