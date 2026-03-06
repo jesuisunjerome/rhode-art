@@ -9,10 +9,6 @@ import { sendOrderEmail } from "../services/email.service.js";
 export const handleStripeWebhook = asyncHandler(async (req, res) => {
   const sig = req.headers["stripe-signature"];
 
-  console.info("Webhook received");
-  console.info("req.body", req.body);
-  console.info("sig", sig);
-
   if (!sig) {
     res.status(400);
     throw new Error("Missing stripe-signature header");
@@ -62,13 +58,13 @@ export const handleStripeWebhook = asyncHandler(async (req, res) => {
         email_address: paymentIntent.receipt_email || "",
       };
 
+      console.log("Order", order);
       await order.save();
-
+      console.log("email client");
       // Send Emails after successful payment via Stripe webhook
       sendOrderEmail(order, "client");
+      console.log("email admin");
       sendOrderEmail(order, "admin");
-
-      console.log(`✅ Order ${orderId} marked as paid via Stripe webhook`);
       break;
     }
 

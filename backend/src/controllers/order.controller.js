@@ -1,3 +1,4 @@
+export const IVA = 0.16;
 import Order from "../models/Order.js";
 import Product from "../models/Product.js";
 import asyncHandler from "../utils/asyncHandler.js";
@@ -45,8 +46,11 @@ export const createOrder = asyncHandler(async (req, res) => {
     });
   }
 
-  const shippingPrice = itemsPrice > 100 ? 0 : 10; // Example logic
+  // const shippingPrice = itemsPrice > 100 ? 0 : 10; // Example logic
+  const shippingPrice = 0;
   const totalPrice = itemsPrice + shippingPrice;
+  const iva = totalPrice * IVA;
+  const totalWithIva = totalPrice + iva;
 
   const order = new Order({
     orderItems: verifiedOrderItems,
@@ -55,7 +59,8 @@ export const createOrder = asyncHandler(async (req, res) => {
     paymentMethod,
     itemsPrice,
     shippingPrice,
-    totalPrice,
+    iva,
+    totalPrice: totalWithIva,
     isPaid: false, // Defaults to false until webhook confirms payment
   });
 
