@@ -141,6 +141,12 @@ export default function OrderPage() {
                     </span>
                   </div>
                   <div className="flex justify-between text-sm">
+                    <span className="text-slate-500">IVA</span>
+                    <span className="text-primary-dark">
+                      ${order.iva.toLocaleString()}
+                    </span>
+                  </div>
+                  <div className="flex justify-between text-sm">
                     <span className="text-slate-500">Envío</span>
                     <span className="text-primary-dark">
                       ${order.shippingPrice.toLocaleString()}
