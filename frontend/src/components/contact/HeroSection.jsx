@@ -39,10 +39,10 @@ export default function Hero() {
                 <div className="space-y-1">
                   <h4 className="text-primary-dark font-semibold">Teléfono</h4>
                   <a
-                    href="tel:+525555555555"
+                    href="tel:+7532137159"
                     className="text-sm block hover:underline text-accent"
                   >
-                    +52 (55) 5555-5555
+                    (+52) 753 213-7159
                   </a>
                   <p className="text-xs text-slate-400 leading-5 block">
                     Disponible para llamadas y WhatsApp en horario comercial.
@@ -55,30 +55,30 @@ export default function Hero() {
             <div className="grid grid-cols-3 gap-4 items-end">
               <div className="col-span-2">
                 <img
-                  src="/images/1.jpg"
+                  src="/images/products/1.webp"
                   alt="Artistic representation"
-                  className="object-cover w-full h-40"
+                  className="object-cover w-full h-40 bg-gray-50"
                 />
               </div>
               <div>
                 <img
-                  src="/images/2.jpg"
+                  src="/images/products/2.webp"
                   alt="Artistic representation"
-                  className="object-cover w-full h-60"
+                  className="object-cover w-full h-60 bg-gray-50"
                 />
               </div>
               <div>
                 <img
-                  src="/images/3.png"
+                  src="/images/products/3.webp"
                   alt="Artistic representation"
-                  className="object-cover w-full h-50"
+                  className="object-cover w-full h-50 bg-gray-50"
                 />
               </div>
               <div className="col-span-2 self-start">
                 <img
-                  src="/images/6.jpg"
+                  src="/images/products/6.webp"
                   alt="Artistic representation"
-                  className="object-cover w-full h-40"
+                  className="object-cover w-full h-40 bg-gray-50"
                 />
               </div>
             </div>

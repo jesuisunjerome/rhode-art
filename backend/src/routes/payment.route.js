@@ -6,9 +6,9 @@ import {
 
 const router = express.Router();
 
-// POST /api/payments/webhook
+// POST /api/payments/webhook/stripe
 // IMPORTANT: express.raw() is applied at the server level for this route.
-router.post("/webhook", handleStripeWebhook);
+router.post("/webhook/stripe", handleStripeWebhook);
 
 // POST /api/payments/webhook/mercadopago
 router.post("/webhook/mercadopago", handleMPWebhook);

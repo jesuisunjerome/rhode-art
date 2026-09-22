@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { IVA } from "../utils/mockupData";
+import { IVA } from "../utils/constants";
 
 export const useCartStore = create(
   persist(
@@ -10,7 +10,7 @@ export const useCartStore = create(
 
       addToCart: (product) => {
         const { cart } = get();
-        const productExists = cart.find((item) => item._id === product._id);
+        const productExists = cart.some((item) => item._id === product._id);
         product.qty = 1;
 
         if (productExists) {

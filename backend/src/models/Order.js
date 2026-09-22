@@ -37,41 +37,18 @@ const orderSchema = new mongoose.Schema(
       update_time: { type: String },
       email_address: { type: String },
     },
-    itemsPrice: {
-      type: Number,
-      required: true,
-      default: 0.0,
-    },
-    shippingPrice: {
-      type: Number,
-      required: true,
-      default: 0.0,
-    },
-    iva: {
-      type: Number,
-      required: true,
-      default: 0.0,
-    },
-    totalPrice: {
-      type: Number,
-      required: true,
-      default: 0.0,
-    },
-    isPaid: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
-    paidAt: {
+    itemsPrice: { type: Number, required: true, default: 0.0 },
+    shippingPrice: { type: Number, required: true, default: 0.0 },
+    iva: { type: Number, required: true, default: 0.0 },
+    totalPrice: { type: Number, required: true, default: 0.0 },
+    isPaid: { type: Boolean, required: true, default: false },
+    paidAt: { type: Date },
+    isDelivered: { type: Boolean, required: true, default: false },
+    deliveredAt: { type: Date },
+    expireAt: {
       type: Date,
-    },
-    isDelivered: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
-    deliveredAt: {
-      type: Date,
+      default: () => new Date(Date.now() + 24 * 60 * 60 * 1000), // Expires in 24 hours
+      index: { expires: 0 },
     },
   },
   {

@@ -6,7 +6,7 @@
     "dimensions": "38x31 cm",
     "type": "original",
     "medium": "acrílico sobre lienzo",
-    "price": 2500,
+    "price": 1500,
     "images": [
       "https://images.unsplash.com/photo-1586537049236-b212dc756931?q=80&w=1019&auto=format&fit=crop"
     ],
@@ -22,7 +22,7 @@
     "dimensions": "50x40 cm",
     "type": "original",
     "medium": "acrílico sobre lienzo",
-    "price": 3500,
+    "price": 1500,
     "images": [
       "https://images.unsplash.com/photo-1632231484562-3d2bed7e808d?w=500&auto=format&fit=crop"
     ],
@@ -38,7 +38,7 @@
     "type": "original",
     "dimensions": "60x50 cm",
     "medium": "acrílico sobre lienzo",
-    "price": 4500,
+    "price": 1500,
     "images": [
       "https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=735&auto=format&fit=crop"
     ],
@@ -54,7 +54,7 @@
     "type": "original",
     "dimensions": "70x60 cm",
     "medium": "acrílico sobre lienzo",
-    "price": 5500,
+    "price": 1500,
     "images": [
       "https://images.unsplash.com/photo-1578301978069-45264734cddc?q=80&w=712&auto=format&fit=crop"
     ],
@@ -70,7 +70,7 @@
     "type": "original",
     "dimensions": "80x70 cm",
     "medium": "acrílico sobre lienzo",
-    "price": 6500,
+    "price": 1500,
     "images": [
       "https://images.unsplash.com/photo-1581592487771-132f53bd2b48?q=80&w=718&auto=format&fit=crop"
     ],
@@ -86,7 +86,7 @@
     "type": "original",
     "dimensions": "90x80 cm",
     "medium": "acrílico sobre lienzo",
-    "price": 7500,
+    "price": 1500,
     "images": [
       "https://images.unsplash.com/photo-1579541513287-3f17a5d8d62c?q=80&w=752&auto=format&fit=crop"
     ],
@@ -102,7 +102,7 @@
     "dimensions": "100x90 cm",
     "type": "original",
     "medium": "acrílico sobre lienzo",
-    "price": 8500,
+    "price": 1500,
     "images": [
       "https://images.unsplash.com/photo-1581592487771-132f53bd2b48?q=80&w=718&auto=format&fit=crop"
     ],
@@ -118,7 +118,7 @@
     "dimensions": "50x40 cm",
     "type": "open-edition",
     "medium": "impresión digital sobre lienzo",
-    "price": 3500,
+    "price": 1500,
     "images": [
       "https://images.unsplash.com/photo-1581592487771-132f53bd2b48?q=80&w=718&auto=format&fit=crop"
     ],
@@ -134,7 +134,7 @@
     "type": "giclee",
     "dimensions": "50x40 cm",
     "medium": "impresión Giclée sobre papel de arte fino",
-    "price": 3500,
+    "price": 1100,
     "images": [
       "https://images.unsplash.com/photo-1581592487771-132f53bd2b48?q=80&w=718&auto=format&fit=crop"
     ],

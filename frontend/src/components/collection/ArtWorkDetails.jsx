@@ -1,7 +1,7 @@
-import { CheckCircleIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { useCartStore } from "../../store/useCartStore";
+import { formatCurrency } from "../../utils/helper";
 
 export default function ArtWorkDetails({ artwork, isPending }) {
   const { addToCart, isProductInCart } = useCartStore();
@@ -17,6 +17,8 @@ export default function ArtWorkDetails({ artwork, isPending }) {
 
   if (isPending) return <ArtWorkDetailsSkeleton />;
 
+  const isSoldOut = artwork.soldOut || artwork.countInStock === 0;
+
   return (
     <>
       <div className="max-w-lg mx-auto text-center">
@@ -29,22 +31,20 @@ export default function ArtWorkDetails({ artwork, isPending }) {
       </div>
       <div className="lg:max-w-6xl mx-auto flex flex-col md:flex-row md:gap-10">
         <div className="flex-1 md:w-[45%] space-y-4">
-          <div
-            role="img"
-            className="w-full min-h-120"
-            style={{
-              background: `url('${mainImage}') center center / cover no-repeat`,
-            }}
-          ></div>
+          <img
+            className="w-full h-120 bg-gray-50 object-cover"
+            src={mainImage}
+            alt={artwork.name}
+          />
           <div className="flex gap-2 overflow-x-scroll scrollbar-hide">
             {artwork.images.map((image, index) => (
               <div key={index}>
-                <button className="w-20">
+                <button type="button" className="w-20 overflow-hidden group" onClick={() => handleImageClick(image)}>
                   <img
                     src={image}
                     alt={artwork.name}
-                    className="w-full object-cover h-20"
-                    onClick={() => handleImageClick(image)}
+                    className="w-full object-cover h-20 bg-gray-50 group-hover:scale-105 transition-transform duration-1000"
+
                   />
                 </button>
               </div>
@@ -52,20 +52,7 @@ export default function ArtWorkDetails({ artwork, isPending }) {
           </div>
         </div>
         <div className="flex-1 space-y-10 py-5">
-          <div className="space-y-2">
-            {artwork.soldOut && (
-              <h3 className="text-slate-400">
-                <span className="line-through">
-                  {artwork.price.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                  })}
-                </span>{" "}
-                (Vendido)
-              </h3>
-            )}
-            <p>{artwork.description}</p>
-          </div>
+          <p>{artwork.description}</p>
 
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="border border-slate-200 p-2 space-y-2">
@@ -87,46 +74,42 @@ export default function ArtWorkDetails({ artwork, isPending }) {
           </div>
 
           <div className="space-y-4">
-            {!artwork.soldOut && (
-              <>
-                <div className="flex items-center gap-5">
-                  <h3 className="text-xl font-medium text-accent">
-                    {artwork.price.toLocaleString("en-US", {
-                      style: "currency",
-                      currency: "USD",
-                    })}
-                  </h3>
-                  <div className="flex items-center gap-1 text-emerald-600 text-sm">
-                    <CheckCircleIcon className="w-4 h-4" />
-                    Disponible
-                  </div>
-                </div>
-                <div className="flex gap-3">
-                  <button
-                    onClick={() => addToCart(artwork)}
-                    type="button"
-                    title={
-                      isProductInCart(artwork._id)
-                        ? "Ya agregado al carrito"
-                        : "Agregar al carrito"
-                    }
-                    disabled={isProductInCart(artwork._id)}
-                    className="btn-primary-hover group"
-                  >
-                    Agregar al carrito
-                  </button>
-                  <Link
-                    to="/checkout"
-                    onClick={() =>
-                      !isProductInCart(artwork._id) && addToCart(artwork)
-                    }
-                    className="btn-primary group"
-                  >
-                    Adquirir obra
-                  </Link>
-                </div>
-              </>
-            )}
+            <div className="flex items-center gap-1">
+              <h3 className={`text-xl font-medium ${isSoldOut ? "text-slate-400 line-through" : "text-accent"}`}>
+                {formatCurrency(artwork.price)}
+              </h3>
+              {isSoldOut &&
+                <span className="flex items-center gap-1 text-orange-600 text-sm">
+                  (Vendido)
+                </span>
+              }
+            </div>
+            <div className="flex gap-3">
+              <button
+                onClick={() => addToCart(artwork)}
+                type="button"
+                title={
+                  isProductInCart(artwork._id)
+                    ? "Ya agregado al carrito"
+                    : "Agregar al carrito"
+                }
+                disabled={isProductInCart(artwork._id) || isSoldOut}
+                className="btn-primary-hover group"
+              >
+                Agregar al carrito
+              </button>
+              {!isSoldOut && (
+                <Link
+                  to="/checkout"
+                  onClick={() =>
+                    !isProductInCart(artwork._id) && addToCart(artwork)
+                  }
+                  className="btn-primary group"
+                >
+                  Adquirir obra
+                </Link>
+              )}
+            </div>
           </div>
         </div>
       </div>

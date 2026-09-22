@@ -1,5 +1,6 @@
 import { useCartStore } from "../store/useCartStore";
-import { IVA } from "../utils/mockupData";
+import { IVA } from "../utils/constants";
+import { formatCurrency } from "../utils/helper";
 
 export default function CartTotal() {
   const { getCartSubtotal, getCartTotalWithIVA } = useCartStore();
@@ -13,28 +14,19 @@ export default function CartTotal() {
       <div className="flex justify-between text-slate-500 text-sm">
         <span>Subtotal:</span>
         <span>
-          {subtotal.toLocaleString("en-US", {
-            style: "currency",
-            currency: "USD",
-          })}
+          {formatCurrency(subtotal)}
         </span>
       </div>
       <div className="flex justify-between text-slate-500 text-sm">
         <span>IVA ({IVA * 100}%):</span>
         <span>
-          {ivaAmount.toLocaleString("en-US", {
-            style: "currency",
-            currency: "USD",
-          })}
+          {formatCurrency(ivaAmount)}
         </span>
       </div>
       <div className="flex justify-between font-semibold text-sm">
         <span>Total:</span>
         <span>
-          {total.toLocaleString("en-US", {
-            style: "currency",
-            currency: "USD",
-          })}
+          {formatCurrency(total)}
         </span>
       </div>
     </>

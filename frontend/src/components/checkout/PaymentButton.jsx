@@ -20,13 +20,13 @@ export default function PaymentButton({
         />
       );
     case PAYMENT_METHOD_NAMES.APPLEPAY:
-      return <ApplePayButton formData={formData} onSuccess={onSuccess} />;
+      return <ApplePayButton disabled={disabled} formData={formData} onSuccess={onSuccess} />;
     case PAYMENT_METHOD_NAMES.MERCADOPAGO:
       return (
         <MercadoPagoButton
           formData={formData}
           disabled={disabled}
-          onSuccess={onSuccess}
+        // onSuccess={onSuccess}
         />
       );
     case PAYMENT_METHOD_NAMES.STRIPE:

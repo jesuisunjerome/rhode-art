@@ -1,25 +1,25 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
-import { PAYMENT_METHODS } from "../../utils/constants";
-import { checkoutData } from "../../utils/mockupData";
+import { COUNTRY_LIST, PAYMENT_METHODS } from "../../utils/constants";
 import { checkoutSchema } from "../../utils/schemas";
 import PaymentButton from "./PaymentButton";
+import { useMemo } from "react";
 
 export default function CheckoutForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
     getValues,
     setValue,
     watch,
   } = useForm({
+    mode: "all",
     resolver: zodResolver(checkoutSchema),
-    defaultValues: checkoutData,
   });
 
-  const disabled = Object.keys(errors).length > 0;
+  const disabled = !isValid;
   const paymentMethod = watch("paymentMethod");
 
   const navigate = useNavigate();
@@ -30,19 +30,23 @@ export default function CheckoutForm() {
   };
 
   // Data shape expected by ApplePayButton
-  const applePayFormData = {
-    customer: {
-      name: `${getValues("firstName")} ${getValues("lastName")}`.trim(),
-      email: getValues("email"),
-      phone: getValues("phone"),
-    },
-    shippingAddress: {
-      address: getValues("address"),
-      city: getValues("city"),
-      postalCode: getValues("postalCode"),
-      country: getValues("country"),
-    },
-  };
+  const applePayFormData = useMemo(() => {
+    return {
+      customer: {
+        name: `${getValues("firstName")} ${getValues("lastName")}`.trim(),
+        email: getValues("email"),
+        phone: getValues("phone"),
+      },
+      shippingAddress: {
+        address: getValues("address"),
+        city: getValues("city"),
+        postalCode: getValues("postalCode"),
+        country: getValues("country"),
+      },
+    }
+  }, [watch()]);
+
+  console.log(applePayFormData)
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-12">
@@ -160,24 +164,17 @@ export default function CheckoutForm() {
             <label htmlFor="country" className="form-label">
               País
             </label>
-            <input
-              type="text"
-              id="country"
-              placeholder="País"
-              className="form-input"
-              {...register("country")}
-            />
-            {/* <select
+            <select
               id="country"
               className="form-input h-12.5"
               {...register("country")}
             >
-              <option value="US">Estados Unidos</option>
-              <option value="MX">México</option>
-              <option value="AR">Argentina</option>
-              <option value="BR">Brasil</option>
-              <option value="CA">Canadá</option>
-            </select> */}
+              {COUNTRY_LIST.map(({ value, label }) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
+            </select>
             {errors.country && (
               <p className="text-red-500 text-sm">{errors.country.message}</p>
             )}
@@ -207,32 +204,20 @@ export default function CheckoutForm() {
           Método de Pago
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
-          {PAYMENT_METHODS.map(({ id, name, Icon }) => (
+          {PAYMENT_METHODS.map(({ id, name, img }) => (
             <button
               key={id}
+              type="button"
+              disabled={disabled}
               onClick={() => {
                 setValue("paymentMethod", name);
               }}
-              className={`p-6 border transition-all flex flex-col items-center gap-3 hover:border-accent ${
-                paymentMethod === name
-                  ? "border-accent bg-accent/5 ring-1 ring-accent"
-                  : "border-slate-200 bg-white shadow-sm hover:shadow-md"
-              }`}
+              className={`p-6 border transition-all flex flex-col items-center gap-3 hover:border-accent ${paymentMethod === name
+                ? "border-accent bg-accent/5 ring-1 ring-accent"
+                : "border-slate-200 bg-white shadow hover:shadow-md disabled:opacity-50 disabled:border-slate-200"
+                }`}
             >
-              <div
-                className={`w-10 h-10 ${
-                  paymentMethod === name ? "text-accent" : "text-slate-400"
-                }`}
-              >
-                <Icon />
-              </div>
-              <span
-                className={`text-[10px] uppercase tracking-widest font-bold text-center ${
-                  paymentMethod === name ? "text-accent" : "text-slate-500"
-                }`}
-              >
-                {name}
-              </span>
+              <img src={img} alt={name} className="h-8 mx-auto object-contain bg-gray-50" />
             </button>
           ))}
         </div>
@@ -253,7 +238,11 @@ export default function CheckoutForm() {
           paymentMethod={paymentMethod}
           formData={applePayFormData}
           disabled={disabled}
-          onSuccess={(orderId) => navigate(`/order/${orderId}`)}
+          onSuccess={(orderId) =>
+            navigate(
+              `/order/${orderId}?status=success&email=${applePayFormData.customer.email}`,
+            )
+          }
         />
       </div>
     </form>

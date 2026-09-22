@@ -1,4 +1,5 @@
 import { useCartStore } from "../store/useCartStore";
+import { formatCurrency } from "../utils/helper";
 
 export default function CartItem({
   item,
@@ -9,7 +10,7 @@ export default function CartItem({
 
   return (
     <div key={item._id} className="flex gap-3">
-      <div className="w-25 h-26">
+      <div className="w-25 h-26 bg-slate-100">
         <img
           src={item.images[0]}
           alt={item.name}
@@ -25,10 +26,7 @@ export default function CartItem({
             </p>
           )}
           <p className="text-sm text-primary-dark">
-            {item.price.toLocaleString("en-US", {
-              style: "currency",
-              currency: "USD",
-            })}
+            {formatCurrency(item.price)}
           </p>
         </div>
         {showRemoveButton && (

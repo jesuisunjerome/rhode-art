@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "name": "rhodeart-backend",
   "builds": [
     {
       "src": "src/server.js",

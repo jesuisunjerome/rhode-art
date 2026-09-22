@@ -25,33 +25,37 @@ export const getMPPayment = async (paymentId) => {
 export const createMPPreference = async (order, orderItems) => {
   const preference = new Preference(client);
 
-  const response = await preference.create({
-    body: {
-      items: orderItems.map((item) => ({
-        id: item.product.toString(),
-        title: item.name,
-        quantity: item.qty,
-        unit_price: item.price,
-        currency_id: "USD", // Adjust if needed, Mercado Pago supports multiple
-      })),
-      shipments: {
-        cost: order.shippingPrice,
-        mode: "not_specified",
-      },
-      back_urls: {
-        success: `${process.env.FRONTEND_URL}/order/${order._id}?status=success`,
-        failure: `${process.env.FRONTEND_URL}/order/${order._id}?status=failure`,
-        pending: `${process.env.FRONTEND_URL}/order/${order._id}?status=pending`,
-      },
-      auto_return: "approved",
-      // redirectMode:"modal",
-      notification_url: `${process.env.BACKEND_URL}/api/payments/webhook/mercadopago`,
-      external_reference: order._id.toString(),
-      metadata: {
-        order_id: order._id.toString(),
-      },
+  const back_urls = {
+    success: `${process.env.CLIENT_URL}/order/${order._id}?status=success&email=${encodeURIComponent(order.customer.email)}`,
+    failure: `${process.env.CLIENT_URL}/order/${order._id}?status=failure&email=${encodeURIComponent(order.customer.email)}`,
+    pending: `${process.env.CLIENT_URL}/order/${order._id}?status=pending&email=${encodeURIComponent(order.customer.email)}`,
+  };
+
+  const body = {
+    items: orderItems.map((item) => ({
+      id: item.product.toString(),
+      title: item.name,
+      quantity: item.qty,
+      unit_price: item.price,
+      currency_id: "MXN",
+    })),
+    shipments: {
+      cost: order.shippingPrice,
+      mode: "not_specified",
     },
-  });
+    back_urls,
+    notification_url: `${process.env.BACKEND_URL}/api/payments/webhook/mercadopago`,
+    external_reference: order._id.toString(),
+    metadata: {
+      order_id: order._id.toString(),
+    },
+  };
+
+  if (process.env.NODE_ENV === "production") {
+    body.auto_return = "approved";
+  }
+
+  const response = await preference.create({ body });
 
   return {
     preferenceId: response.id,

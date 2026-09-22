@@ -15,7 +15,7 @@ export default function PayPalButton({ formData, disabled, onSuccess }) {
   const clientId = import.meta.env.VITE_PAYPAL_CLIENT_ID;
   const options = {
     "client-id": clientId,
-    currency: "USD",
+    currency: "MXN",
     intent: "capture",
   };
 
@@ -73,7 +73,7 @@ export default function PayPalButton({ formData, disabled, onSuccess }) {
         }}
         createOrder={handlePayment}
         onApprove={onApprove}
-        // onError={onError}
+      // onError={onError}
       />
     </PayPalScriptProvider>
   );

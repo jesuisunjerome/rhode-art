@@ -2,7 +2,7 @@ import { useCreateOrder } from "../../../hooks/orders/mutations";
 import { useCartStore } from "../../../store/useCartStore";
 import { PAYMENT_METHOD_NAMES } from "../../../utils/constants";
 
-export default function MercadoPagoButton({ formData, disabled, onSuccess }) {
+export default function MercadoPagoButton({ formData, disabled }) {
   const { cart } = useCartStore();
   const { createOrder, isPending } = useCreateOrder();
 
@@ -41,7 +41,7 @@ export default function MercadoPagoButton({ formData, disabled, onSuccess }) {
     >
       {isPending ? (
         <>
-          <span className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full"></span>
+          <span className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full"></span>{" "}
           Procesando...
         </>
       ) : (

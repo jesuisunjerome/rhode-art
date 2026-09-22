@@ -69,9 +69,8 @@ const productSchema = new mongoose.Schema(
 );
 
 // Auto-update soldOut based on countInStock before saving
-productSchema.pre("save", function (next) {
+productSchema.pre("save", function () {
   this.soldOut = this.countInStock <= 0;
-  next();
 });
 
 const Product = mongoose.model("Product", productSchema);

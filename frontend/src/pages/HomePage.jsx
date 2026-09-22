@@ -34,18 +34,19 @@ export default function Homepage() {
                 </div>
               </div>
               <div className="md:col-span-2 md:order-0">
-                <div className="lg:w-[80%] h-90">
+                <div className="lg:w-[80%] h-90 bg-gray-50">
                   <img
-                    src="/images/5.png"
+                    src="/images/products/5.webp"
                     alt="Artistic representation"
                     className="object-cover w-full h-full"
                   />
                 </div>
               </div>
               <div className="md:col-span-3 lg:col-start-2 lg:col-span-2 lg:-mt-40 flex flex-col md:flex-row gap-10 md:order-3">
-                <div className="flex-1 md:w-[60%] h-90 ring-8 ring-white">
+                <div className="flex-1 md:w-[60%] h-90 ring-8 ring-white bg-gray-50">
                   <img
                     src="https://images.unsplash.com/photo-1707259731001-230e11a23fcb?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Artistic representation"
                     className="object-cover w-full h-full"
                   />
                 </div>

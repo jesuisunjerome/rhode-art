@@ -11,5 +11,5 @@ export const checkoutSchema = z.object({
   state: z.string().min(1, "Estado es requerido"),
   country: z.string().min(1, "País es requerido"),
   postalCode: z.string().min(1, "Código postal es requerido"),
-  paymentMethod: z.enum(PAYMENT_METHODS.map((method) => method.name)),
+  paymentMethod: z.enum(PAYMENT_METHODS.map((method) => method.name)).optional(),
 });

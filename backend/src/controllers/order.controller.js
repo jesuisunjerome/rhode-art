@@ -9,6 +9,7 @@ import {
   capturePayPalOrder,
 } from "../services/paypal.service.js";
 import { createMPPreference } from "../services/mercadopago.service.js";
+import logger from "../config/logger.js";
 
 // @desc    Create new order
 // @route   POST /api/orders
@@ -74,9 +75,7 @@ export const createOrder = asyncHandler(async (req, res) => {
 
     const paymentIntent = await createPaymentIntent(
       amountInCents,
-      "usd",
-      createdOrder._id,
-      { orderId: createdOrder._id.toString() },
+      createdOrder._id.toString(),
     );
     responseData.clientSecret = paymentIntent.client_secret;
   } else if (paymentMethod === "PayPal") {
@@ -114,6 +113,7 @@ export const captureOrder = asyncHandler(async (req, res) => {
 
   if (captureData.status === "COMPLETED") {
     order.isPaid = true;
+    order.expireAt = null;
     order.paidAt = Date.now();
     order.paymentResult = {
       id: captureData.id,
@@ -123,6 +123,15 @@ export const captureOrder = asyncHandler(async (req, res) => {
     };
 
     const updatedOrder = await order.save();
+
+    // Reduce stock
+    for (const item of updatedOrder.orderItems) {
+      const product = await Product.findById(item.product);
+      if (product) {
+        product.countInStock -= item.qty;
+        await product.save();
+      }
+    }
 
     // Send Emails after successful capture
     sendOrderEmail(updatedOrder, "client");
@@ -144,6 +153,15 @@ export const getOrderById = asyncHandler(async (req, res) => {
   if (!order) {
     res.status(404);
     throw new Error("Order not found");
+  }
+
+  // Security check: Only allow if the email matches
+  const requestEmail = req.query.email?.toLowerCase().trim();
+  const orderEmail = order.customer?.email?.toLowerCase().trim();
+
+  if (!requestEmail || requestEmail !== orderEmail) {
+    res.status(401);
+    throw new Error("Not authorized to view this order");
   }
 
   res.json(order);

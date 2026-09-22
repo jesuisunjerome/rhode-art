@@ -5,12 +5,12 @@ import asyncHandler from "../utils/asyncHandler.js";
 // @desc    Get all products
 // @route   GET /api/products
 // @access  Public
-export const getProducts = asyncHandler(async (req, res) => {
+export const getProducts = async (req, res) => {
   const products = await Product.find({})
     .populate("category", "name slug")
     .lean();
   res.json(products);
-});
+};
 
 // @desc    Get top 8 masterpieces (most valuable available originals)
 // @route   GET /api/products/masterpieces

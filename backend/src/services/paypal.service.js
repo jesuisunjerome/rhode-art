@@ -47,7 +47,7 @@ export const createPayPalOrder = async (totalAmount, orderId) => {
         {
           reference_id: orderId.toString(),
           amount: {
-            currency_code: "USD",
+            currency_code: "MXN",
             value: totalAmount.toFixed(2),
           },
         },

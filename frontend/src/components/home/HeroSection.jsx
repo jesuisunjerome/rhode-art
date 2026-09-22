@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { SOCIAL_MEDIA } from "../../utils/constants";
 
 export default function HeroSection() {
   return (
@@ -32,30 +33,17 @@ export default function HeroSection() {
               >
                 Envíame un correo
               </a>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:underline text-slate-500 hover:text-accent"
-              >
-                Instagram
-              </a>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:underline text-slate-500 hover:text-accent"
-              >
-                Twitter
-              </a>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:underline text-slate-500 hover:text-accent"
-              >
-                Facebook
-              </a>
+              {SOCIAL_MEDIA.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline text-slate-500 hover:text-accent"
+                >
+                  {social.label}
+                </a>
+              ))}
             </div>
           </div>
         </div>
@@ -80,9 +68,9 @@ export default function HeroSection() {
             </Link>
           </div>
           <div className="flex-1">
-            <div className="h-100 md:h-120">
+            <div className="h-100 md:h-120 bg-gray-50">
               <img
-                src="/images/4.png"
+                src="/images/products/4.webp"
                 alt="Artistic representation"
                 className="object-cover w-full h-full"
               />
@@ -93,3 +81,4 @@ export default function HeroSection() {
     </header>
   );
 }
+

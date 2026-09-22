@@ -4,6 +4,7 @@ import {
   MailIcon,
   TwitterIcon,
 } from "lucide-react";
+import { SOCIAL_MEDIA } from "../../utils/constants";
 
 export default function AboutSection() {
   return (
@@ -41,33 +42,18 @@ export default function AboutSection() {
                 Conecta con el artista
               </h4>
               <div className="flex flex-wrap gap-4">
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex group items-center gap-2 border border-slate-200 px-4 py-2"
-                >
-                  <InstagramIcon className="w-5 h-5" />
-                  <span className="group-hover:underline">@rhodeart</span>
-                </a>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex group items-center gap-2 border border-slate-200 px-4 py-2"
-                >
-                  <FacebookIcon className="w-5 h-5" />
-                  <span className="group-hover:underline">rhode96</span>
-                </a>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex group items-center gap-2 border border-slate-200 px-4 py-2"
-                >
-                  <TwitterIcon className="w-5 h-5" />
-                  <span className="group-hover:underline">@rhode_exy</span>
-                </a>
+                {SOCIAL_MEDIA.map(({ label, url, username, icon: Icon }) => (
+                  <a
+                    key={label}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex group items-center gap-2 border border-slate-200 px-4 py-2"
+                  >
+                    <Icon className="w-5 h-5" />
+                    <span className="group-hover:underline">{username}</span>
+                  </a>
+                ))}
                 <a
                   href="mailto:rhodeexy@gmail.com"
                   className="flex group items-center gap-2 border border-slate-200 px-4 py-2"
@@ -81,7 +67,7 @@ export default function AboutSection() {
             </div>
           </div>
           <div className="flex-1">
-            <div className="h-100 md:h-120">
+            <div className="h-100 md:h-120 bg-gray-50">
               <img
                 src="https://images.unsplash.com/photo-1606586740500-a98d83e65d1c?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Artist portrait"

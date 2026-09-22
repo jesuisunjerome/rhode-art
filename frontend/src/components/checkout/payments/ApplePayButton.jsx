@@ -34,8 +34,8 @@ export default function ApplePayButton({ disabled, formData, onSuccess }) {
     if (!stripe || total <= 0 || disabled) return;
 
     const pr = stripe.paymentRequest({
-      country: "US",
-      currency: "usd",
+      country: "MXN",
+      currency: "mxn",
       total: {
         label: "Rhode Art",
         amount: Math.round(total * 100), // Amount in cents
@@ -89,6 +89,7 @@ export default function ApplePayButton({ disabled, formData, onSuccess }) {
         if (error) {
           ev.complete("fail");
           toast.error(error.message || "El pago falló. Inténtalo de nuevo.");
+          console.error("Apple Pay payment error:", error);
           return;
         }
 

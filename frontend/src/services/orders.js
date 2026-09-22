@@ -27,9 +27,9 @@ export const ORDER_API = {
   },
 
   // get order by id
-  getOrderById: async (id) => {
+  getOrderById: async (id, email) => {
     try {
-      const response = await api.get(`${API_ENDPOINTS.ORDERS}/${id}`);
+      const response = await api.get(`${API_ENDPOINTS.ORDERS}/${id}?email=${email}`);
       return response.data;
     } catch (error) {
       console.error("Error fetching order:", error);

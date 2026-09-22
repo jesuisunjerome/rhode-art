@@ -1,10 +1,11 @@
 import Order from "../models/Order.js";
+import Product from "../models/Product.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import { constructWebhookEvent } from "../services/stripe.service.js";
 import { sendOrderEmail } from "../services/email.service.js";
 
 // @desc    Handle Stripe webhook events (payment confirmations)
-// @route   POST /api/payments/webhook
+// @route   POST /api/payments/webhook/stripe
 // @access  Stripe only (verified via signature)
 export const handleStripeWebhook = asyncHandler(async (req, res) => {
   const sig = req.headers["stripe-signature"];
@@ -50,6 +51,7 @@ export const handleStripeWebhook = asyncHandler(async (req, res) => {
       }
 
       order.isPaid = true;
+      order.expireAt = null;
       order.paidAt = new Date();
       order.paymentResult = {
         id: paymentIntent.id,
@@ -60,6 +62,15 @@ export const handleStripeWebhook = asyncHandler(async (req, res) => {
 
       console.log("Order", order);
       await order.save();
+
+      // Reduce stock
+      for (const item of order.orderItems) {
+        const product = await Product.findById(item.product);
+        if (product) {
+          product.countInStock -= item.qty;
+          await product.save();
+        }
+      }
       console.log("email client");
       // Send Emails after successful payment via Stripe webhook
       sendOrderEmail(order, "client");
@@ -126,6 +137,7 @@ export const handleMPWebhook = asyncHandler(async (req, res) => {
             const order = await Order.findById(orderId);
             if (order && !order.isPaid) {
               order.isPaid = true;
+              order.expireAt = null;
               order.paidAt = new Date();
               order.paymentResult = {
                 id: payment.id.toString(),
@@ -134,6 +146,15 @@ export const handleMPWebhook = asyncHandler(async (req, res) => {
                 email_address: payment.payer?.email || "",
               };
               await order.save();
+
+              // Reduce stock
+              for (const item of order.orderItems) {
+                const product = await Product.findById(item.product);
+                if (product) {
+                  product.countInStock -= item.qty;
+                  await product.save();
+                }
+              }
 
               // Send Emails after successful payment via MP webhook
               sendOrderEmail(order, "client");

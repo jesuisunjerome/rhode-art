@@ -1,9 +1,5 @@
-import {
-  FacebookIcon,
-  InstagramIcon,
-  MailIcon,
-  TwitterIcon,
-} from "lucide-react";
+import { MailIcon } from "lucide-react";
+import { SOCIAL_MEDIA } from "../../utils/constants";
 
 export default function SocialMediaSection() {
   return (
@@ -19,44 +15,26 @@ export default function SocialMediaSection() {
           </h3>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+          {SOCIAL_MEDIA.map((social) => (
+            <div key={social.name}>
+              <a
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary-hover flex-col py-10! w-full"
+              >
+                <social.icon size={60} />
+                <span className="lowercase">{social.username}</span>
+              </a>
+            </div>
+          ))}
           <div>
             <a
-              href=""
-              target="_blank"
-              className="btn-primary-hover flex-col py-10! w-full"
-            >
-              <InstagramIcon size={60} />
-              <span className="lowercase">@rhodeart</span>
-            </a>
-          </div>
-          <div>
-            <a
-              href=""
-              target="_blank"
-              className="btn-primary-hover flex-col py-10! w-full"
-            >
-              <FacebookIcon size={60} />
-              <span className="lowercase">@rhodeart</span>
-            </a>
-          </div>
-          <div>
-            <a
-              href=""
-              target="_blank"
-              className="btn-primary-hover flex-col py-10! w-full"
-            >
-              <TwitterIcon size={60} />
-              <span className="lowercase">@rhodeart</span>
-            </a>
-          </div>
-          <div>
-            <a
-              href=""
-              target="_blank"
+              href="mailto:rhodeexy@gmail.com?subject=Información&body=Hola%20Rhode,%20quiero%20información%20sobre..."
               className="btn-primary-hover flex-col py-10! w-full"
             >
               <MailIcon size={60} />
-              <span className="lowercase">@rhodeart</span>
+              <span className="lowercase">rhodeexy@gmail.com</span>
             </a>
           </div>
         </div>

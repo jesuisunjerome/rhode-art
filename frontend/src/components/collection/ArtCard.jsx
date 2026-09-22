@@ -1,6 +1,7 @@
 import { ShoppingCartIcon } from "lucide-react";
 import { Link } from "react-router";
 import { useCartStore } from "../../store/useCartStore";
+import { formatCurrency } from "../../utils/helper";
 
 export default function ArtCard({ artwork }) {
   const { addToCart, isProductInCart } = useCartStore();
@@ -9,13 +10,12 @@ export default function ArtCard({ artwork }) {
   return (
     <div className="flex-1">
       <div className="art-container bg-light">
-        <Link to={`/collection/artwork/${artwork._id}`}>
+        <Link className="group overflow-hidden block" to={`/collection/artwork/${artwork._id}`}>
           <img
             src={artwork.images[0]}
             alt={artwork.name}
-            className={`object-cover h-110 sm:h-80 lg:h-90 w-full hover:-translate-y-1 transition-transform duration-500 ease-in-out pointer-events-none ${
-              isSoldOut ? "grayscale-100" : ""
-            }`}
+            className={`object-cover group-hover:scale-105 bg-gray-50 h-110 sm:h-80 lg:h-90 w-full hover:-translate-y-1 transition-transform duration-1000 ease-in-out pointer-events-none ${isSoldOut ? "grayscale-100" : ""
+              }`}
           />
         </Link>
         <div className="flex items-start gap-1 mt-3 mb-0.5 justify-between">
@@ -28,22 +28,16 @@ export default function ArtCard({ artwork }) {
             <p className="text-xs text-slate-400">
               {artwork.dimensions}, {artwork.medium}
             </p>
-            {artwork.soldOut ? (
+            {isSoldOut ? (
               <p className="text-sm text-slate-400 mt-1">
                 <span className="line-through">
-                  {artwork.price.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                  })}
+                  {formatCurrency(artwork.price)}
                 </span>{" "}
                 (Vendido)
               </p>
             ) : (
               <p className="text-primary-dark mt-1">
-                {artwork.price.toLocaleString("en-US", {
-                  style: "currency",
-                  currency: "USD",
-                })}
+                {formatCurrency(artwork.price)}
               </p>
             )}
           </div>

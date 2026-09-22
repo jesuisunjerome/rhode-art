@@ -46,7 +46,7 @@ button {
 }
 
 .btn-primary {
-  @apply bg-primary-dark text-primary relative inline-flex flex-1 items-center justify-center gap-2 px-5 py-4 text-center text-xs tracking-widest uppercase sm:flex-none md:py-3;
+  @apply bg-primary-dark hover:bg-accent hover:text-white text-primary relative inline-flex flex-1 items-center justify-center gap-2 px-5 py-4 text-center text-xs tracking-widest uppercase sm:flex-none md:py-3;
 
   &&::after {
     position: absolute;
@@ -56,6 +56,10 @@ button {
     width: 101%;
     height: 101%;
     border: 1px solid var(--color-primary-dark);
+  }
+
+  &:hover::after {
+    border: 1px solid var(--color-accent);
   }
 }
 
@@ -86,6 +90,8 @@ button {
 }
 
 .scrollbar-hide {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
