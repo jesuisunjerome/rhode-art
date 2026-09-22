@@ -11,8 +11,6 @@ export default function StripeButton({ formData, disabled, onSuccess }) {
   const [isProcessing, setIsProcessing] = useState(false);
   const { cart, clearCart } = useCartStore();
 
-  console.log(disabled)
-
   const handlePayment = async (e) => {
     e.preventDefault();
 

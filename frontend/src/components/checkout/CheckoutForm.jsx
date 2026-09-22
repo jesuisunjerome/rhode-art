@@ -46,8 +46,6 @@ export default function CheckoutForm() {
     }
   }, [watch()]);
 
-  console.log(applePayFormData)
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-12">
       <div>
