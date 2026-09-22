@@ -1,13 +1,67 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/white-logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rhode Art :: Art Gallery</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Language" content="es" />
+
+  <!-- SEO Básico -->
+  <title>Rhode Art :: Art Gallery</title>
+  <meta name="description"
+    content="Descubre arte único y original en Rhode Art. Galería de arte con obras exclusivas, exposiciones y eventos. Encuentra la pieza perfecta para tu colección." />
+  <meta name="author" content="Logenik" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://rhode-art.vercel.app/" />
+  <meta name="keywords" content="arte, galería de arte, obras de arte, exposiciones, eventos, Rhode Art" />
+
+  <!-- Favicon y Tema Móvil-->
+  <link rel="icon" type="image/png" sizes="32x32" href="/white-logo.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/white-logo.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/white-logo.png" />
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Preconnect Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=LINE+Seed+JP&display=swap" rel="stylesheet" />
+
+  <!-- Open Graph Meta Tags (for social sharing) -->
+  <meta property="og:site_name" content="Rhode Art" />
+  <meta property="og:title" content="Rhode Art :: Art Gallery" />
+  <meta property="og:description"
+    content="Descubre arte único y original en Rhode Art. Galería de arte con obras exclusivas, exposiciones y eventos. Encuentra la pieza perfecta para tu colección." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rhode-art.vercel.app/" />
+  <meta property="og:image" content="https://rhode-art.vercel.app/white-logo.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Logo Rhode Art" />
+  <meta property="og:locale" content="es_ES" />
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="Rhode Art :: Art Gallery" />
+  <meta property="twitter:url" content="https://rhode-art.vercel.app/" />
+  <meta property="twitter:description"
+    content="Descubre arte único y original en Rhode Art. Galería de arte con obras exclusivas, exposiciones y eventos. Encuentra la pieza perfecta para tu colección." />
+  <meta property="twitter:image" content="https://rhode-art.vercel.app/white-logo.png" />
+  <meta property="twitter:image:alt" content="Logo Rhode Art" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-96V45YKJ03"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-96V45YKJ03');
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>

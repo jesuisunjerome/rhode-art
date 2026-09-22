@@ -1,11 +1,16 @@
 import { BrowserRouter, Route, Routes } from "react-router";
-import Layout from "./common/Layout";
-import ArtWorkPage from "./pages/ArtWorkPage";
-import CheckoutPage from "./pages/CheckoutPage";
-import CollectionPage from "./pages/CollectionPage";
-import ContactPage from "./pages/ContactPage";
-import Homepage from "./pages/HomePage";
-import OrderPage from "./pages/OrderPage";
+import { lazy } from "react";
+
+// Layouts
+const Layout = lazy(() => import("./common/Layout"));
+
+// Public Pages
+const ArtWorkPage = lazy(() => import("./pages/ArtWorkPage"));
+const CheckoutPage = lazy(() => import("./pages/CheckoutPage"));
+const CollectionPage = lazy(() => import("./pages/CollectionPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const Homepage = lazy(() => import("./pages/HomePage"));
+const OrderPage = lazy(() => import("./pages/OrderPage"));
 
 function App() {
   return (
